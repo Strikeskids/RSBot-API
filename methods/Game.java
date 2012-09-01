@@ -64,6 +64,20 @@ public class Game {
 		}
 		return false;
 	}
+	
+	/**
+	 * @return true if the client is logged into a members world; otherwise false
+	 */
+	public static boolean isMembersWorld() {
+		return isLoggedIn() && ((Settings.get(1230) >> 23) & 0x3) == 2;
+	}
+	
+	/**
+	 * @return true if the client is logged into a free world; otherwise false
+	 */
+	public static boolean isFreeWorld() {
+		return isLoggedIn() && ((Settings.get(1230) >> 23) & 0x3) == 1;
+	}
 
 	/**
 	 * @return The floor level, or plane, you are currently located on.
