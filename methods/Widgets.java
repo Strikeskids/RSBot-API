@@ -160,8 +160,9 @@ public class Widgets {
 
 		while (component.getAbsoluteY() < areaY || component.getAbsoluteY() > areaY + areaHeight - component.getHeight()) {
 			final boolean scrollUp = component.getAbsoluteY() < areaY;
-			scrollBar.getChildren()[scrollUp ? 4 : 5].click(true);
-
+			final WidgetChild toClick = scrollBar.getChild(scrollUp ? 4 : 5);
+			if (toClick == null) break;
+			toClick.click(true);
 			Task.sleep(Random.nextInt(100, 200));
 		}
 
